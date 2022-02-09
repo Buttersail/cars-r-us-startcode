@@ -15,9 +15,9 @@ public class Member extends BaseUser{
     String lastName;
     String street;
     String city;
-    int zip;
-    boolean approved;
-    int rank;
+    String zip;
+    //boolean approved;
+    //int rank;
 
 
     @CreationTimestamp
@@ -27,15 +27,15 @@ public class Member extends BaseUser{
     private LocalDateTime dateEdited;
 
 
-    public Member(String username, String email, String password, String firstName, String lastName, String street, String city, int zip, boolean approved, int rank) {
+    public Member(String username, String email, String password, String firstName, String lastName, String street, String city, String zip /*boolean approved, int rank*/) {
         super(username, email, password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
         this.city = city;
         this.zip = zip;
-        this.approved = approved;
-        this.rank = rank;
+        //this.approved = approved;
+        //this.rank = rank;
     }
 
     public Member() {

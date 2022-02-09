@@ -17,8 +17,8 @@ class MemberRepositoryTest {
     @BeforeEach
     void setUp() {
 
-        memberRepository.save(new Member("xxx", "xxx@abc.dk", "test123", "xxx", "yyy", "xxx 123", "xxxbro", 1234, true, 8));
-        memberRepository.save(new Member("zzz", "zzz@abc.dk", "test123", "zzz", "xxx", "zzz 123", "zzzbro", 1234, false, 4));
+        memberRepository.save(new Member("xxx", "xxx@abc.dk", "test123", "xxx", "yyy", "xxx 123", "xxxbro", "1234"));
+        memberRepository.save(new Member("zzz", "zzz@abc.dk", "test123", "zzz", "xxx", "zzz 123", "zzzbro", "1234"));
     }
 
     @Test

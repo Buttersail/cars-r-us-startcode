@@ -1,21 +1,50 @@
 package kea.sem3.jwtdemo.entity;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import kea.sem3.jwtdemo.dto.CarRequest;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@DiscriminatorValue("CAR")
-public class Car extends BaseUser {
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+public class Car {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
 
     String brand;
     String model;
-    int pricePrDay;
+    double pricePrDay;
+    double bestDiscount;
 
-    public Car(String username, String email, String password, String brand, String model, int pricePrDay) {
-        super(username, email, password);
+    @CreationTimestamp
+    private LocalDateTime dateCreated;
+
+    @UpdateTimestamp
+    private LocalDateTime dateEdited;
+
+    public Car(String brand, String model, double pricePrDay, double bestDiscount) {
         this.brand = brand;
         this.model = model;
         this.pricePrDay = pricePrDay;
+        this.bestDiscount = bestDiscount;
+    }
+
+    public Car(CarRequest body) {
+        this.brand = body.getBrand();
+        this.model = body.getModel();
+        this.pricePrDay = body.getPricePrDay();
+        this.bestDiscount = body.getBestDiscount();
     }
 
     public Car() {

@@ -41,11 +41,9 @@ public class MakeTestData implements ApplicationRunner {
         userRepository.save(admin);
         userRepository.save(both);
 
-        Member m1 = new Member("Isaac", "isaac@abc.dk", "test123", "Isaac", "Shade", "Keaboulevard 123", "Keabro", 1234, true, 8);
-        m1.addRole(Role.USER);
-        memberRepository.save(m1);
+        memberRepository.save(new Member("KW", "kw@a.dk", "test12", "Kurt", "Wonnegut", "Lyngbyvje 34", "Lyngby", "2800"));
 
-        //Car car1 = new Car("Isaac", "isaac@abc.dk", "test123", "Suzuki", "Splash", 120.30);
+        carRepository.save(new Car("Suzuki", "Splash", 120.30, 10.0));
 
 
         System.out.println("########################################################################################");
