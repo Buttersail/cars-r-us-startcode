@@ -15,10 +15,12 @@ public class CarService {
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
+
     public List<CarResponse> getCars(){
         List<Car> cars = carRepository.findAll();
         return CarResponse.getCarsFromEntities(cars);
     }
+
     public CarResponse getCar(int id,boolean all) throws Exception {
         Car car = carRepository.findById(id).orElseThrow(()->new Client4xxException("not found"));
         return new CarResponse(car,false);
@@ -32,6 +34,7 @@ public class CarService {
     public CarResponse editCar(CarRequest body,int id){
         return null;
     }
+
     public void deleteCar(int id) {
 
     }
