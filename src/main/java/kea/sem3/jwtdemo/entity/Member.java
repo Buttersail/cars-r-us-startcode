@@ -5,11 +5,17 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @DiscriminatorValue("MEMBER")
 public class Member extends BaseUser{
+
+    @OneToMany(mappedBy = "member")
+    private Set<Reservation> reservationSetMembers = new HashSet<>();
 
     String firstName;
     String lastName;
