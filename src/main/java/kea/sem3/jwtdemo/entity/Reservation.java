@@ -24,6 +24,7 @@ public class Reservation {
 
     @CreationTimestamp
     private LocalDateTime reservationDate;
+
     private LocalDateTime rentalDate;
 
     public Reservation(Car car, Member member, LocalDateTime rentalDate) {
