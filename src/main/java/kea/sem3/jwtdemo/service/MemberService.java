@@ -44,4 +44,6 @@ public class MemberService {
         member = memberRepository.save(member);
         return new MemberResponse(member.getUsername(), member.getCreated(), member.getRoles());
     }
+
+
 }

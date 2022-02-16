@@ -33,8 +33,8 @@ public class CarResponse {
         this.pricePrDay = car.getPricePrDay();
         this.id = car.getId();
         if(includeAll) {
-            this.created = car.getDateCreated();
-            this.updated = car.getDateEdited();
+            this.created = car.getCreated();
+            this.updated = car.getEdited();
             this.bestDiscount = car.getBestDiscount();
         }
     }

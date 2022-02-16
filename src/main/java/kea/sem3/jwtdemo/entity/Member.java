@@ -47,6 +47,13 @@ public class Member extends BaseUser {
     //Number between 0 and 10, ranking the customer
     byte ranking;
 
+    @OneToMany(mappedBy = "reservedBy")
+    private Set<Reservation> reservations = new HashSet<>();
+
+    public void addReservation(Reservation res) {
+        reservations.add(res);
+    }
+
     public Member(String username, String email, String password, String firstName, String lastName, String street, String city, String zip) {
         super(username, email, password);
         this.firstName = firstName;
