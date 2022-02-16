@@ -65,7 +65,7 @@ public class MakeTestData implements ApplicationRunner {
         } else {
             System.out.println("Car is reserved this day");
         }
-        
+
         System.out.println("########################################################################################");
         System.out.println("########################################################################################");
         System.out.println("#################################### WARNING ! #########################################");
