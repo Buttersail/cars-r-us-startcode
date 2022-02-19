@@ -29,8 +29,17 @@ public class MemberController {
 
     @PostMapping()
     public MemberResponse AddMember(@RequestBody MemberRequest body) {
-        System.out.println("Hello");
         return memberService.addMember(body);
+    }
+
+    @PutMapping("/{username}")
+    public MemberResponse UpdateMember(@PathVariable String username, @RequestBody MemberRequest body) {
+        return memberService.updateMember(username, body);
+    }
+
+    @DeleteMapping("/{username}")
+    public void deleteMember(@PathVariable String username) {
+        memberService.deleteMember(username);
     }
 
 }

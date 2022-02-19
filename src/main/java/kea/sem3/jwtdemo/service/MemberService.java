@@ -23,12 +23,12 @@ public class MemberService {
 
     public List<MemberResponse> getMembers() {
         List<Member> members = memberRepository.findAll();
-        return members.stream().map(member -> new MemberResponse(member,false)).collect(Collectors.toList());
+        return members.stream().map(member -> new MemberResponse(member, false)).collect(Collectors.toList());
     }
 
     public MemberResponse getMemberByUserName(String username) {
         Member member = memberRepository.findById(username).orElseThrow(() -> new Client4xxException("User not found", HttpStatus.NOT_FOUND));
-        return new MemberResponse(member,false);
+        return new MemberResponse(member, false);
     }
 
     public MemberResponse addMember(MemberRequest body) {
@@ -45,5 +45,27 @@ public class MemberService {
         return new MemberResponse(member.getUsername(), member.getCreated(), member.getRoles());
     }
 
+    public MemberResponse updateMember(String username, MemberRequest body) {
+        Member member = memberRepository.findById(username).orElseThrow(() -> new Client4xxException("Member not found!", HttpStatus.NOT_FOUND));
+        member.setUsername(body.getUsername());
+        member.setPassword(body.getPassword());
+        member.setEmail(body.getEmail());
+        member.setFirstName(body.getFirstName());
+        member.setLastName(body.getLastName());
+        member.setStreet(body.getStreet());
+        member.setCity(body.getCity());
+        member.setZip(body.getZip());
+
+        return new MemberResponse(memberRepository.save(member), false);
+    }
+
+    public void deleteMember(String username) {
+        Member member = memberRepository.findById(username).orElseThrow(() -> new Client4xxException("Member not found", HttpStatus.NOT_FOUND));
+        try {
+            memberRepository.delete(member);
+        } catch (Exception ex) {
+            throw new Client4xxException("Could not delete user with username: " + username, HttpStatus.BAD_REQUEST);
+        }
+    }
 
 }
