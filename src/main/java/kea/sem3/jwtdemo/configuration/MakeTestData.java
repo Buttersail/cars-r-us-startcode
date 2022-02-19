@@ -48,6 +48,7 @@ public class MakeTestData implements ApplicationRunner {
         Member m2 =memberRepository.save(new Member("HW","hw@a.dk","test12","Hanne","Wonnegut","Lyngbyvje 34","Lyngby","2800"));
 
         Car carVolvo1 = carRepository.save(new Car("Volvo", "C40", 560,10));
+        Car carMercedes = carRepository.save(new Car("Mercedes", "SLR", "500", 15));
         carRepository.save(new Car("Volvo", "V70", 500,10));
         carRepository.save(new Car("Volvo", "V49", 400,10));
         carRepository.save(new Car("Suzuki", "Vitara", 500,14));
@@ -57,6 +58,8 @@ public class MakeTestData implements ApplicationRunner {
         //Create a Reservation
         Reservation res1 = new Reservation(carVolvo1, m1, LocalDate.of(2022, 2, 16));
         reservationRepository.save(res1);
+
+        Reservation res3 = new Reservation((carMercedes, m1, LocalDate.of(1992, 12, 12)));
 
         Reservation res = reservationRepository.findReservationByReservedCar_IdAndRentalDate(carVolvo1.getId(), LocalDate.of(2022, 2, 16));
         if(res == null) {

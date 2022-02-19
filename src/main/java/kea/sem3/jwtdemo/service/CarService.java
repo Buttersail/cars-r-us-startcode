@@ -46,7 +46,8 @@ public class CarService {
         carRepository.save(car);
     }
 
-    public void deleteCar(int id) {
+    public void deleteCar(int carId) {
+        Car car = carRepository.findById(carId).orElseThrow(()-> new Client4xxException("No car with provided ID found"));
 
     }
 }
